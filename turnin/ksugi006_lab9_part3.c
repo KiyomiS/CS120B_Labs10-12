@@ -29,7 +29,7 @@ void TimerOn() {
     SREG |= 0x80;
 }
 
-void Timerff() {
+void TimerOff() {
     TCCR1B = 0x00;
 }
 
