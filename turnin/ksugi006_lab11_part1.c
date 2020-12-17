@@ -1,5 +1,5 @@
 /*	Author: ksugi006
- *  Partner(s) Name:
+ *  	Partner(s) Name:
  *	Lab Section:
  *	Assignment: Lab 11  Exercise 1
  *	Exercise Description: [optional - include for your own benefit]
@@ -64,8 +64,6 @@ ISR(TIMER1_COMPA_vect)
 		_avr_timer_cntcurr = _avr_timer_M;
 	}
 }
-
-
 
 void transmit_data(unsigned char data) {
     int i;
