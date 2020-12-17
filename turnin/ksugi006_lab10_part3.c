@@ -1,9 +1,19 @@
+/*  Author: ksugi006
+ *  Partner(s) Name: 
+ *	Lab Section:
+ *	Assignment: Lab 10  Exercise 3
+ *	Exercise Description: [optional - include for your own benefit]
+ *
+ *	I acknowledge all content contained herein, excluding template or example
+ *	code, is my own original work.
+ *  Demo Link: 
+ */
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-
 
 unsigned char SetBit(unsigned char pin, unsigned char number, unsigned char bin_value) 
 {
@@ -14,12 +24,7 @@ unsigned char GetBit(unsigned char port, unsigned char number)
 	return ( port & (0x01 << number) );
 }
 
-
 const unsigned char pwd[5]={'1','2','3','4','5'};
-
-
-
-
 
 unsigned char GetKeypadKey() {
 
@@ -57,8 +62,6 @@ unsigned char GetKeypadKey() {
 	return('\0'); // default value
 
 }
-
-
 
 typedef struct task{
         int state;
@@ -134,9 +137,6 @@ void PWM_off() {
 	TCCR3A = 0x00;
 	TCCR3B = 0x00;
 }
-
-
-
 
 unsigned char task1=1;
 unsigned char task2=1;
@@ -221,8 +221,6 @@ int Tick_R(int state){
 	return state;
 }
 
-
-
 enum LockSys{Lstart,lockr,lockp};
 int Tick_L(int state){
 	switch(state){
@@ -258,7 +256,7 @@ int Tick_L(int state){
 	return state;
 }
 
-const unsigned short tone[8]={261.63,293.66,329.63,349.23,392.00,440.00,493.88,523.25};
+const unsigned short tone[8]={261.63,293.66,329.63,349.23,329.63,293.66,261.63,261.63};
 const unsigned char melody[9]={8,8,8,8,5,7,8,7,8};
 
 unsigned char m_i;
@@ -328,7 +326,6 @@ int Tick_D(int state){
 	}
 	return state;
 }
-
 
 enum CombineLEDsSM{start,C};
 int Tick_C(int state){
