@@ -1,7 +1,7 @@
 /*	Author: ksugi006
  *  Partner(s) Name: 
  *	Lab Section:
- *	Assignment: Lab 12  Exercise 1
+ *	Assignment: Lab 12  Exercise 3
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
