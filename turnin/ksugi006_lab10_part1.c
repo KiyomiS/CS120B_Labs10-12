@@ -8,12 +8,11 @@
  *	code, is my own original work.
  */
  
- #include <avr/io.h>
+#include <avr/io.h>
 #include <avr/interrupt.h>
 #ifdef _SIMULATE_
 #include "simAVRHeader.h"
 #endif
-
 
 unsigned char SetBit(unsigned char pin, unsigned char number, unsigned char bin_value) 
 {
@@ -23,8 +22,6 @@ unsigned char GetBit(unsigned char port, unsigned char number)
 {
 	return ( port & (0x01 << number) );
 }
-
-
 
 unsigned char GetKeypadKey() {
 
@@ -60,10 +57,7 @@ unsigned char GetKeypadKey() {
 	if (GetBit(PINC,3)==0) { return('D'); }
 
 	return('\0'); // default value
-
 }
-
-
 
 typedef struct task{
         int state;
@@ -118,16 +112,13 @@ ISR(TIMER1_COMPA_vect)
 
 
 
-
-
-
 unsigned char task1;
-enum Respondtopad{Rstart,wait,led};
+enum Respondtopad{start,wait,led};
 int Tick_R(int state){
 	unsigned char x;
 	x=GetKeypadKey();
 	switch(state){
-		case Rstart:
+		case start:
 			state=wait;
 			break;
 		case wait:
@@ -150,7 +141,7 @@ int Tick_R(int state){
 			break;
 	}
 	switch(state){
-		case Rstart:
+		case start:
 			break;
 		case wait:
 			task1=0x00;
@@ -192,17 +183,21 @@ int main(void) {
 	DDRB=0xFF;PORTB=0x00;
 	DDRC=0xF0;PORTC=0x0F;
 	unsigned char i=0;
+	
 	tasks[i].state=start;
 	tasks[i].period=100;
 	tasks[i].elapsedTime=0;
 	tasks[i].TickFct=&Tick_R;
+	
 	i++;
 	tasks[i].state=start;
         tasks[i].period=100;
         tasks[i].elapsedTime=0;
         tasks[i].TickFct=&Tick_C;
+	
 	TimerSet(100);
 	TimerOn();
+	
 	while(1){
 	}
 	return 1;
